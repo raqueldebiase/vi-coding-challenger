@@ -4,7 +4,13 @@ export default {
     './.storybook/**/*.{js,jsx,ts,tsx}', 
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        lightGray: '#E9E9E9', 
+        mediumGray: '#E4E7EB',
+        darkGray: '#4A4644',
+      },
+    },
   },
   plugins: [],
 };
