@@ -3,7 +3,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import MonsterCard, { MonsterCardProps } from './MonsterCard';
 
 export default {
-  title: 'Atoms/MonsterCard',
+  title: 'molecules/MonsterCard',
   component: MonsterCard,
 } as Meta<MonsterCardProps>;
 

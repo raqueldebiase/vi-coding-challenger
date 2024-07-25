@@ -1,5 +1,3 @@
-// src/components/organisms/FilterSection.tsx
-
 import React from 'react';
 
 interface FilterSectionProps {
@@ -41,4 +39,5 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onTypeChange, selectedTyp
   );
 };
 
+export type { FilterSectionProps };
 export default FilterSection;

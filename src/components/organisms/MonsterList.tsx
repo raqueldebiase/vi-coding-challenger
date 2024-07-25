@@ -1,13 +1,21 @@
-// src/components/MonsterList.tsx
-
 import React from 'react';
 import { Monster } from '../../types';
 
-interface MonsterListProps {
+export interface MonsterListProps {
   monsters: Monster[];
+  loading?: boolean;
+  error?: string;
 }
 
-const MonsterList: React.FC<MonsterListProps> = ({ monsters }) => {
+const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) => {
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
       {monsters.map(monster => (

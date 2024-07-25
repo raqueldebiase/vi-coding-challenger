@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-interactions',
     '@storybook/addon-postcss',
+    '@storybook/addon-designs',
   ],
   framework: '@storybook/react-vite',
   async viteFinal(config) {

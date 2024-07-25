@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import ProductOverviewTemplate from '../templates/ProductOverviewTemplate';
+import { Meta, StoryFn } from '@storybook/react';
+import ProductOverviewTemplate from './ProductOverviewTemplate';
 import { Monster } from '../../types';
 
-// Dados de exemplo para monstros
+// Exemplo de dados para os monstros
 const exampleMonsters: Monster[] = [
   {
     id: 1,
@@ -30,17 +31,25 @@ const exampleMonsters: Monster[] = [
   },
 ];
 
-const ProductOverviewPage: React.FC = () => {
+export default {
+  title: 'Templates/ProductOverviewTemplate',
+  component: ProductOverviewTemplate,
+} as Meta;
+
+const Template: StoryFn = (args) => {
   const [selectedType, setSelectedType] = useState<string>('fire');
 
   return (
     <ProductOverviewTemplate 
-      title="Our Pocket Monsters"
+      {...args}
       selectedType={selectedType}
       onTypeChange={setSelectedType}
-      monsters={exampleMonsters} 
+      monsters={exampleMonsters}  // Adicione exemplos de monstros
     />
   );
 };
 
-export default ProductOverviewPage;
+export const Default = Template.bind({});
+Default.args = {
+  title: 'Our Pocket Monsters',
+};
