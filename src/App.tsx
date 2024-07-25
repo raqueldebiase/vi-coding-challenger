@@ -30,10 +30,10 @@ function App() {
       </aside>
 
       {/* Conteúdo Principal */}
-      <main className="flex-1 p-8">
+      <main className="flex-1 px-8">
         <header>
-          <h1 className="text-2xl font-bold mb-4">Monster Overview</h1>
-          <h2 className="text-lg mb-6">These are our products</h2>
+          <h1 className="text-3xl font-bold pb-6 border-b-2 border-gray-300">Monster Overview</h1>
+          <h2 className="text-lg my-6">These are our products: </h2>
         </header>
         <MonsterList monsters={monsters} />
       </main>
