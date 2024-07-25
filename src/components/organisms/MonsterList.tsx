@@ -1,7 +1,5 @@
-// src/components/MonsterList.tsx
-
 import React, { useState } from 'react';
-import { Monster } from '../../types';
+import { Monster, ChainLink } from '../../types/index';
 import Pagination from './Pagination'; 
 
 export interface MonsterListProps {
@@ -24,16 +22,32 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
   const getCardBackgroundColor = (type: string) => {
     switch (type) {
       case 'fire':
-        return 'bg-red-50';
+        return 'bg-red-200';
       case 'water':
-        return 'bg-blue-50';
+        return 'bg-blue-200';
       case 'grass':
-        return 'bg-green-50';
+        return 'bg-green-200';
       case 'electric':
-        return 'bg-yellow-50';
+        return 'bg-yellow-200';
       default:
-        return 'bg-gray-100';
+        return 'bg-gray-200';
     }
+  };
+
+  // Função para renderizar a cadeia de evolução
+  const renderEvolutionChain = (chain: ChainLink): string[] => {
+    const evolve = (link: ChainLink): string[] => {
+      let names: string[] = [];
+      if (link.species && link.species.name) {
+        names.push(link.species.name);
+      }
+      link.evolves_to.forEach(evolveLink => {
+        names = names.concat(evolve(evolveLink));
+      });
+      return names;
+    };
+
+    return evolve(chain);
   };
 
   if (loading) {
@@ -57,8 +71,18 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
               alt={monster.name}
               className='w-full h-40 object-contain rounded-t'
             />
-            <h3 className='text-md font-bold text-center mt-2 capitalize'>{monster.name}</h3>
-            {/* <p className='text-gray-500'>Type: {monster.type}</p> */}
+            <h2 className='text-lg font-bold mt-2'>{monster.name}</h2>
+            <p className='text-gray-500'>Type: {monster.type}</p>
+            {monster.evolutionChain && (
+              <div className='mt-2'>
+                <h3 className='text-md font-semibold'>Evolution Chain:</h3>
+                {renderEvolutionChain(monster.evolutionChain.chain).map((name, index) => (
+                  <span key={index} className="block text-sm text-gray-600">
+                    {name}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
