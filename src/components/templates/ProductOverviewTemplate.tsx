@@ -1,16 +1,23 @@
 import React from 'react';
-import Title from '../atoms/Title';
 import FilterSection from '../organisms/FilterSection';
 
 interface ProductOverviewTemplateProps {
   title?: string;
 }
 
-const ProductOverviewTemplate: React.FC<ProductOverviewTemplateProps> = ({ title }) => (
-  <div className="p-8">
-    {title && <Title text={title} className="mb-6" />}
-    <FilterSection />
-  </div>
-);
+const ProductOverviewTemplate: React.FC<ProductOverviewTemplateProps> = ({ title }) => {
+  const handleTypeChange = (type: string) => {
+    console.log(type); 
+  };
+
+  return (
+    <div className="p-8">
+      {title && <h1 className="text-2xl font-bold mb-4">{title}</h1>}
+      <FilterSection onTypeChange={handleTypeChange} />
+    </div>
+  );
+};
+
+
 
 export default ProductOverviewTemplate;

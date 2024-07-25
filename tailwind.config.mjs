@@ -1,7 +1,7 @@
 export default {
   content: [
-    './src/**/*.{js,jsx,ts,tsx}', // Adicione esta linha para React
-    './.storybook/**/*.{js,jsx,ts,tsx}', // Adicione esta linha para Storybook
+    './src/**/*.{js,jsx,ts,tsx}', 
+    './.storybook/**/*.{js,jsx,ts,tsx}', 
   ],
   theme: {
     extend: {},

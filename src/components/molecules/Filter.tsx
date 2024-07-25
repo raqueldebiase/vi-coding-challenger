@@ -1,16 +1,17 @@
 import React from 'react';
+import Button from '../atoms/Button';
 
-interface FilterProps {
+export interface FilterProps {
   onFilterChange: (type: string) => void;
 }
 
 const Filter: React.FC<FilterProps> = ({ onFilterChange }) => (
   <div className="flex gap-4 mb-4">
-    <button onClick={() => onFilterChange('all')}>All</button>
-    <button onClick={() => onFilterChange('fire')}>Fire</button>
-    <button onClick={() => onFilterChange('water')}>Water</button>
-    <button onClick={() => onFilterChange('earth')}>Earth</button>
-    <button onClick={() => onFilterChange('air')}>Air</button>
+    <Button onClick={() => onFilterChange('all')} label="All" className="button" />
+    <Button onClick={() => onFilterChange('fire')} label="Fire" className="button" />
+    <Button onClick={() => onFilterChange('water')} label="Water" className="button" />
+    <Button onClick={() => onFilterChange('earth')} label="Earth" className="button" />
+    <Button onClick={() => onFilterChange('air')} label="Air" className="button" />
   </div>
 );
 

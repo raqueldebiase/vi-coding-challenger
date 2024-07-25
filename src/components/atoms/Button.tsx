@@ -1,6 +1,7 @@
+// src/components/atoms/Button.tsx
 import React from 'react';
 
-interface ButtonProps {
+export interface ButtonProps {
   label: string;
   onClick?: () => void;
   className?: string;
