@@ -18,6 +18,8 @@ export interface EvolutionChain {
   chain: ChainLink;
 }
 
+
+
 // Tipos para os monstros
 export interface Monster {
   id: number;

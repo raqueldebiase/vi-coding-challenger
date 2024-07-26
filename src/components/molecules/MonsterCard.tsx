@@ -11,7 +11,7 @@ export interface MonsterCardProps {
 }
 
 const typeColors: Record<string, string> = {
-  fire: 'bg-red-500',
+  fire: 'bg-red-50',
   water: 'bg-blue-500',
   grass: 'bg-green-500',
   electric: 'bg-yellow-500',
