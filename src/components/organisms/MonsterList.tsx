@@ -1,12 +1,37 @@
-// src/components/organisms/MonsterList.tsx
 import React, { useState } from 'react';
 import { Monster, ChainLink } from '../../types/index';
-import Pagination from './Pagination'; 
+import Pagination from './Pagination';
+
+// Atualize o mapeamento de cores conforme o definido em outros lugares
+const typeColors: Record<string, string> = {
+  fire: 'bg-red-50',
+  water: 'bg-blue-50',
+  grass: 'bg-green-50',
+  electric: 'bg-yellow-50',
+  ice: 'bg-cyan-100',
+  fighting: 'bg-red-50',
+  poison: 'bg-purple-50',
+  ground: 'bg-brown-50',
+  flying: 'bg-blue-50',
+  psychic: 'bg-pink-50',
+  bug: 'bg-green-50',
+  rock: 'bg-gray-50',
+  ghost: 'bg-purple-100',
+  dragon: 'bg-indigo-50',
+  dark: 'bg-gray-200',
+  steel: 'bg-gray-300',
+  fairy: 'bg-pink-50',
+  // Adicione mais cores conforme necessário
+};
+
+const getCardBackgroundColor = (type: string) => {
+  return typeColors[type] || 'bg-gray-200'; // Cor padrão se o tipo não estiver no mapeamento
+};
 
 export interface MonsterListProps {
   monsters: Monster[];
   loading?: boolean;
-  error?: string | null; // Altere a tipagem para aceitar string ou null
+  error?: string | null;
 }
 
 const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) => {
@@ -19,21 +44,6 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
   };
 
   const paginatedMonsters = monsters.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-  const getCardBackgroundColor = (type: string) => {
-    switch (type) {
-      case 'fire':
-        return 'bg-red-50';
-      case 'water':
-        return 'bg-blue-50';
-      case 'grass':
-        return 'bg-green-50';
-      case 'electric':
-        return 'bg-yellow-50';
-      default:
-        return 'bg-gray-200';
-    }
-  };
 
   const renderEvolutionChain = (chain: ChainLink): string[] => {
     const evolve = (link: ChainLink): string[] => {

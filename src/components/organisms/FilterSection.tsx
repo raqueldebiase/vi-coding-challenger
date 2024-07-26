@@ -8,16 +8,16 @@ interface FilterSectionProps {
 
 const FilterSection: React.FC<FilterSectionProps> = ({ onTypeChange, selectedType }) => {
   const [types, setTypes] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(true); // Adicione o estado de carregamento
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const getTypes = async () => {
       try {
-        setLoading(true); // Começa a carregar
+        setLoading(true);
         const types = await fetchTypes();
         setTypes(types);
-        setLoading(false); // Finaliza o carregamento
+        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch types:', error);
         setError('Failed to load types');
@@ -30,9 +30,13 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onTypeChange, selectedTyp
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="spinner-border animate-spin inline-block w-12 h-12 border-4 border-solid border-gray-300 border-t-transparent rounded-full" role="status">
-          <span className="visually-hidden">Loading...</span>
+      <div className="flex justify-center items-center h-full">
+        <div className="flex items-center">
+          <svg className="animate-spin h-8 w-8 text-blue-500" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 0 1 8-8v2a6 6 0 0 0 0 12v2a8 8 0 0 1-8-8z"></path>
+          </svg>
+          <span className="ml-4 text-gray-700">Loading...</span>
         </div>
       </div>
     );
@@ -82,6 +86,21 @@ const typeColors: { [key: string]: string } = {
   water: 'bg-blue-500',
   grass: 'bg-green-500',
   electric: 'bg-yellow-500',
+  ice: 'bg-cyan-300',
+  fighting: 'bg-red-700',
+  poison: 'bg-purple-500',
+  ground: 'bg-green-900',
+  flying: 'bg-blue-400',
+  psychic: 'bg-pink-500',
+  bug: 'bg-green-700',
+  rock: 'bg-gray-600',
+  ghost: 'bg-purple-700',
+  dragon: 'bg-indigo-700',
+  dark: 'bg-gray-800',
+  steel: 'bg-gray-500',
+  fairy: 'bg-pink-300',
+  normal: 'bg-white',
+  stellar: 'bg-pink-800'
   // Adicione mais cores conforme necessário
 };
 

@@ -1,5 +1,3 @@
-// src/components/MonsterCard.tsx
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -7,22 +5,41 @@ export interface MonsterCardProps {
   name: string;
   type: string;
   id: number;
-  image: string; 
+  image: string;
 }
 
 const typeColors: Record<string, string> = {
-  fire: 'bg-red-50',
+  lightGray: '#E9E9E9', 
+  mediumGray: '#E4E7EB',
+  darkGray: '#4A4644',
+  fire: 'bg-red-500',
   water: 'bg-blue-500',
   grass: 'bg-green-500',
   electric: 'bg-yellow-500',
-  
+  ice: 'bg-cyan-300',
+  fighting: 'bg-red-700',
+  poison: 'bg-purple-500',
+  ground: 'bg-brown-600',
+  flying: 'bg-blue-400',
+  psychic: 'bg-pink-500',
+  bug: 'bg-green-700',
+  rock: 'bg-gray-600',
+  ghost: 'bg-purple-700',
+  dragon: 'bg-indigo-700',
+  dark: 'bg-gray-800',
+  steel: 'bg-gray-500',
+  fairy: 'bg-pink-300',
 };
 
 const MonsterCard: React.FC<MonsterCardProps> = ({ name, type, id, image }) => {
-  const typeColor = typeColors[type] || 'bg-mediumGray'; 
+  const getCardBackgroundColor = (type: string) => {
+    return typeColors[type] || 'bg-gray-200'; // Cor padrão se o tipo não estiver no mapeamento
+  };
+
+  const typeColor = getCardBackgroundColor(type);
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
+    <div className={`p-4 rounded-lg shadow-md ${typeColor}`}>
       <Link to={`/monsters/${id}`} className="block text-center">
         <img
           src={image}
