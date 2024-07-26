@@ -1,32 +1,8 @@
+// src/components/organisms/MonsterList.tsx
 import React, { useState } from 'react';
-import { Monster, ChainLink } from '../../types/index';
+import { Monster } from '../../types/index';
 import Pagination from './Pagination';
-
-// Atualize o mapeamento de cores conforme o definido em outros lugares
-const typeColors: Record<string, string> = {
-  fire: 'bg-red-50',
-  water: 'bg-blue-50',
-  grass: 'bg-green-50',
-  electric: 'bg-yellow-50',
-  ice: 'bg-cyan-100',
-  fighting: 'bg-red-50',
-  poison: 'bg-purple-50',
-  ground: 'bg-brown-50',
-  flying: 'bg-blue-50',
-  psychic: 'bg-pink-50',
-  bug: 'bg-green-50',
-  rock: 'bg-gray-50',
-  ghost: 'bg-purple-100',
-  dragon: 'bg-indigo-50',
-  dark: 'bg-gray-200',
-  steel: 'bg-gray-300',
-  fairy: 'bg-pink-50',
-  // Adicione mais cores conforme necessário
-};
-
-const getCardBackgroundColor = (type: string) => {
-  return typeColors[type] || 'bg-gray-200'; // Cor padrão se o tipo não estiver no mapeamento
-};
+import MonsterCard from '../molecules/MonsterCard';
 
 export interface MonsterListProps {
   monsters: Monster[];
@@ -44,21 +20,6 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
   };
 
   const paginatedMonsters = monsters.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-  const renderEvolutionChain = (chain: ChainLink): string[] => {
-    const evolve = (link: ChainLink): string[] => {
-      let names: string[] = [];
-      if (link.species && link.species.name) {
-        names.push(link.species.name);
-      }
-      link.evolves_to.forEach(evolveLink => {
-        names = names.concat(evolve(evolveLink));
-      });
-      return names;
-    };
-
-    return evolve(chain);
-  };
 
   if (loading) {
     return (
@@ -84,27 +45,14 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
     <div>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         {paginatedMonsters.map(monster => (
-          <div
+          <MonsterCard
             key={monster.id}
-            className={`p-4 rounded shadow-lg ${getCardBackgroundColor(monster.type)}`}
-          >
-            <img
-              src={monster.image}
-              alt={monster.name}
-              className='w-full h-40 object-contain rounded-t'
-            />
-            <h2 className='text-lg font-bold mt-2'>{monster.name}</h2>
-            {monster.evolutionChain && (
-              <div className='mt-2'>
-                <h3 className='text-md font-semibold'>Evolution Chain:</h3>
-                {renderEvolutionChain(monster.evolutionChain.chain).map((name, index) => (
-                  <span key={index} className="block text-sm text-gray-600">
-                    {name}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+            id={monster.id}
+            name={monster.name}
+            type={monster.type}
+            image={monster.image}
+            evolutionChain={monster.evolutionChain?.chain} // Certifique-se de passar o tipo correto
+          />
         ))}
       </div>
       <Pagination

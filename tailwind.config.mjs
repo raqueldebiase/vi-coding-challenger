@@ -30,15 +30,22 @@ export default {
         dark: 'bg-gray-800',
         steel: 'bg-gray-500',
         fairy: 'bg-pink-300',
+        unknown: 'bg-black-100'
       },
       backdropBlur: {
-        sm: '4px',
+        md: '8px',
       },
+    },
+  },
+  variants: {
+    extend: {
+      backdropBlur: ['responsive', 'hover', 'focus'],
     },
   },
   plugins: [
     forms,
     typography,
     aspectRatio,
+    
   ],
 };
