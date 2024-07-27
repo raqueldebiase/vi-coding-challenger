@@ -1,5 +1,3 @@
-// src/types/index.ts
-
 // Tipos para a cadeia de evolução
 export interface EvolutionDetail {
   min_level?: number;   // Nível mínimo necessário para a evolução
@@ -24,7 +22,7 @@ export interface EvolutionChain {
 export interface Monster {
   id: number;  // Identificador do monstro
   name: string;  // Nome do monstro
-  type: string;  // Tipo do monstro (ex: "fire", "water")
+  types: string[];  // Tipos do monstro (agora um array de strings)
   image: string;  // URL da imagem do monstro
   evolutionChain?: EvolutionChain;  // Cadeia de evolução, se disponível
 }

@@ -6,13 +6,11 @@ export const fetchMonsters = async (type: string): Promise<Monster[]> => {
   const data = await response.json();
 
   if (type === 'all') {
-    // Para "all", pegamos uma lista de todos os Pokémon e seus detalhes
     const pokemonUrls = data.results.map((result: { url: string }) => result.url);
     const monsterData = await Promise.all(pokemonUrls.map(async (url: string) => {
       const pokemonResponse = await fetch(url);
       const pokemonDetails = await pokemonResponse.json();
       
-      // Get the evolution chain ID
       const speciesResponse = await fetch(pokemonDetails.species.url);
       const speciesDetails = await speciesResponse.json();
       const evolutionChainId = speciesDetails.evolution_chain.url.split('/').slice(-2, -1)[0];
@@ -21,19 +19,17 @@ export const fetchMonsters = async (type: string): Promise<Monster[]> => {
       return {
         id: pokemonDetails.id,
         name: pokemonDetails.name,
-        type: pokemonDetails.types[0].type.name,
+        types: pokemonDetails.types.map((typeInfo: { type: { name: string } }) => typeInfo.type.name),
         image: pokemonDetails.sprites.front_default,
         evolutionChain: evolutionChain,
       };
     }));
     return monsterData;
   } else {
-    // Para tipos específicos
     const monsterData = await Promise.all(data.pokemon.map(async (p: { pokemon: { url: string } }) => {
       const pokemonResponse = await fetch(p.pokemon.url);
       const pokemonDetails = await pokemonResponse.json();
       
-      // Get the evolution chain ID
       const speciesResponse = await fetch(pokemonDetails.species.url);
       const speciesDetails = await speciesResponse.json();
       const evolutionChainId = speciesDetails.evolution_chain.url.split('/').slice(-2, -1)[0];
@@ -42,7 +38,7 @@ export const fetchMonsters = async (type: string): Promise<Monster[]> => {
       return {
         id: pokemonDetails.id,
         name: pokemonDetails.name,
-        type: type,
+        types: pokemonDetails.types.map((typeInfo: { type: { name: string } }) => typeInfo.type.name),
         image: pokemonDetails.sprites.front_default,
         evolutionChain: evolutionChain,
       };
@@ -51,12 +47,19 @@ export const fetchMonsters = async (type: string): Promise<Monster[]> => {
   }
 };
 
-const fetchEvolutionChain = async (id: string): Promise<EvolutionChain> => {
-  const response = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`);
-  const data = await response.json();
-  return data;
+const fetchEvolutionChain = async (id: string): Promise<EvolutionChain | null> => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch evolution chain with ID: ${id}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
-
 
 export const fetchTypes = async (): Promise<string[]> => {
   const response = await fetch('https://pokeapi.co/api/v2/type/');

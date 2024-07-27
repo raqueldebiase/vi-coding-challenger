@@ -30,7 +30,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onTypeChange, selectedTyp
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-full">
+      <div className="flex justify-center items-center h-screen">
         <div className="flex items-center">
           <svg className="animate-spin h-8 w-8 text-blue-500" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>

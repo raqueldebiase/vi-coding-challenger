@@ -1,11 +1,10 @@
-// src/components/atoms/MonsterCard.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChainLink } from '../../types/index';
 
 export interface MonsterCardProps {
   name: string;
-  type: string;
+  types: string[]; // Array de tipos
   id: number;
   image: string;
   evolutionChain?: ChainLink;
@@ -32,15 +31,24 @@ const typeColors: Record<string, string> = {
   dark: 'bg-gray-500',
   steel: 'bg-gray-200',
   fairy: 'bg-pink-300',
-  norma: 'bg-gray-100'
+  normal: 'bg-gray-100'
 };
 
 const getCardBackgroundColor = (type: string) => {
   return typeColors[type] || 'bg-gray-200';
 };
 
-const MonsterCard: React.FC<MonsterCardProps> = ({ name, type, id, image, evolutionChain }) => {
-  const typeColor = getCardBackgroundColor(type);
+const MonsterCard: React.FC<MonsterCardProps> = ({ name, types, id, image, evolutionChain }) => {
+  const primaryTypeColor = getCardBackgroundColor(types[0]); // Usar o primeiro tipo para o fundo
+  const renderTypeCircles = (types: string[]) => {
+    return types.map((type, index) => (
+      <div
+        key={index}
+        className={`w-4 h-4 rounded-full ${getCardBackgroundColor(type)} mr-2`}
+        title={type} // Adicionar um tooltip para o tipo
+      />
+    ));
+  };
 
   const renderEvolutionChain = (chain: ChainLink): string[] => {
     const evolve = (link: ChainLink): string[] => {
@@ -58,32 +66,31 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ name, type, id, image, evolut
   };
 
   return (
-    <div className={`p-2 rounded-lg shadow-md ${typeColor}`}>
-  <Link to={`/monsters/${id}`} className="block text-center">
-    <img
-      src={image}
-      alt={name}
-      className="w-full h-40 object-contain rounded-t"
-    />
-    <div className="bg-white/75 backdrop-blur-md flex flex-wrap justify-center p-4 rounded min-h-[150px]">
-      <div className="flex items-center mt-2">
-        <div className={`w-4 h-4 rounded-full ${typeColor} mr-2`} />
-        <h3 className="text-lg font-semibold capitalize">{name}</h3>
-      </div>
-      {evolutionChain && (
-        <div className='mt-2'>
-          <h4 className='text-sm font-semibold'>Evolution Chain:</h4>
-          {renderEvolutionChain(evolutionChain).map((name, index) => (
-            <span key={index} className="block text-sm text-gray-600 capitalize">
-              {name}
-            </span>
-          ))}
+    <div className={`p-2 rounded-lg shadow-md ${primaryTypeColor}`}>
+      <Link to={`/monsters/${id}`} className="block text-center">
+        <img
+          src={image}
+          alt={name}
+          className="w-full h-40 object-contain rounded-t"
+        />
+        <div className="bg-white/90 backdrop-blur-md flex flex-wrap justify-center p-4 rounded min-h-[150px]">
+          <div className="flex flex-wrap items-center mt-2">
+            {renderTypeCircles(types)} {/* Exibir bolinhas de cores para todos os tipos */}
+            <h3 className="text-lg font-semibold capitalize">{name}</h3>
+          </div>
+          {evolutionChain && (
+            <div className='mt-2'>
+              <h4 className='text-sm font-semibold'>Evolution Chain:</h4>
+              {renderEvolutionChain(evolutionChain).map((name, index) => (
+                <span key={index} className="block text-sm text-gray-600 capitalize">
+                  {name}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
-      )}
+      </Link>
     </div>
-  </Link>
-</div>
-
   );
 };
 
