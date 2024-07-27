@@ -17,8 +17,10 @@ export interface TypeResponse {
 }
 
 export interface Monster {
-  id: number;
-  name: string;
-  type: string;
-  image: string;
+  id: number;  // Identificador do monstro
+  name: string;  // Nome do monstro
+  type: string,
+  types: string[];  // Tipos do monstro (agora um array de strings)
+  image: string;  // URL da imagem do monstro
+  
 }
