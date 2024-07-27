@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; // Remova a importação de 'React'
 import MonsterList from './components/organisms/MonsterList'; 
 import FilterSection from './components/organisms/FilterSection';
 import { fetchMonsters } from './services/api';
