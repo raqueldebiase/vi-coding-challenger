@@ -1,5 +1,3 @@
-// src/components/organisms/Pagination.stories.tsx
-
 import { Meta, StoryFn } from '@storybook/react';
 import Pagination from './Pagination';
 
@@ -7,7 +5,7 @@ export default {
   title: 'organisms/Pagination',
   component: Pagination,
   argTypes: {
-    onPageChange: { action: 'page changed' }, // Ação para o Storybook
+    onPageChange: { action: 'page changed' }, 
   },
 } as Meta;
 

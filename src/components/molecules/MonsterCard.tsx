@@ -1,5 +1,3 @@
-// src/components/molecules/MonsterCard.tsx
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { EvolutionChain, ChainLink } from '../../types';

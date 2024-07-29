@@ -1,4 +1,3 @@
-// src/templates/ProductOverviewTemplate.tsx
 import React from 'react';
 import FilterSection from '../organisms/FilterSection';
 import MonsterList from '../organisms/MonsterList';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProductOverviewTemplate from '../templates/ProductOverviewTemplate';
 import { Monster } from '../../types';
 
-// Dados de exemplo para monstros
+// Examples
 const exampleMonsters: Monster[] = [
   {
     id: 1,

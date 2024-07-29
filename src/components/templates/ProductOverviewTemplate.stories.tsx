@@ -3,7 +3,6 @@ import { Meta, StoryFn } from '@storybook/react';
 import ProductOverviewTemplate from './ProductOverviewTemplate';
 import { Monster } from '../../types';
 
-// Exemplo de dados para os monstros
 const exampleMonsters: Monster[] = [
   {
     id: 1,
@@ -14,19 +13,19 @@ const exampleMonsters: Monster[] = [
   {
     id: 2,
     name: 'Squirtle',
-    types: ['water'], 
+    types: ['water'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png',
   },
   {
     id: 3,
     name: 'Bulbasaur',
-    types: ['grass'], 
+    types: ['grass'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
   },
   {
     id: 4,
     name: 'Pikachu',
-    types: ['electric'], 
+    types: ['electric'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
   },
 ];
@@ -34,9 +33,9 @@ const exampleMonsters: Monster[] = [
 export default {
   title: 'Templates/ProductOverviewTemplate',
   component: ProductOverviewTemplate,
-} as Meta;
+} as Meta<typeof ProductOverviewTemplate>;
 
-const Template: StoryFn = (args) => {
+const Template: StoryFn<typeof ProductOverviewTemplate> = (args) => {
   const [selectedType, setSelectedType] = useState<string>('fire');
 
   return (

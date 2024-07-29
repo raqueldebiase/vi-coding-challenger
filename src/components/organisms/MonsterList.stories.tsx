@@ -1,9 +1,8 @@
-// src/components/organisms/MonsterList.stories.tsx
 import { Meta, StoryFn } from '@storybook/react';
-import MonsterList, { MonsterListProps } from './MonsterList'; // Corrigir caminho de importação
-import { Monster } from '../../types'; // Corrigir caminho de importação
+import MonsterList, { MonsterListProps } from './MonsterList'; 
+import { Monster } from '../../types';
 
-// Dados de exemplos de cadeias de evolução
+
 const evolutionChain = {
   id: 1,
   baby_trigger_item: null,
@@ -29,7 +28,7 @@ const evolutionChain = {
   }
 };
 
-// Exemplos de dados de monstros para as histórias
+
 const exampleMonsters: Monster[] = [
   {
     id: 1,

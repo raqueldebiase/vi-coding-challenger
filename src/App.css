@@ -13,12 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Certifique-se de que o root está centralizado e tem a largura máxima desejada */
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 1rem;
-  box-sizing: border-box; /* Adiciona box-sizing para garantir que padding e border não alterem a largura total */
+  box-sizing: border-box; 
 }
 
 a {
@@ -34,7 +34,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  flex-direction: column; /* Garante que o conteúdo será organizado em coluna */
+  flex-direction: column; 
   min-width: 320px;
   min-height: 100vh;
 }
@@ -42,27 +42,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
@@ -80,21 +59,8 @@ button:focus-visible {
   }
 }
 
-
-@media screen and (min-width: 2560px) {
-
-}
-
-@media screen and (min-width: 1366px) and (max-width: 2559px) {
-
-}
-
 @media screen and (min-width: 960px) and (max-width: 1365px){
   #root {
     padding: 2rem;
   }
-}
-
-@media screen and (min-width: 375px) and (max-width: 959px){
-
 }

@@ -1,5 +1,3 @@
-// .storybook/main.ts
-
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
@@ -11,7 +9,10 @@ const config: StorybookConfig = {
     '@storybook/addon-postcss',
     '@storybook/addon-designs',
   ],
-  framework: '@storybook/react-vite',
+  framework: {
+    name: '@storybook/react-vite',
+    options: {}
+  },
   async viteFinal(config) {
     return {
       ...config,

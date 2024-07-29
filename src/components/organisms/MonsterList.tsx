@@ -13,19 +13,19 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState<number>(12);
   
-  // Atualiza o itemsPerPage com base na largura da janela
+ 
   useEffect(() => {
     const updateItemsPerPage = () => {
-      if (window.innerWidth < 640) { // Mobile
+      if (window.innerWidth < 640) { 
         setItemsPerPage(3);
-      } else if (window.innerWidth < 768) { // Tablet
+      } else if (window.innerWidth < 768) { 
         setItemsPerPage(6);
-      } else { // Desktop
+      } else { 
         setItemsPerPage(12);
       }
     };
 
-    updateItemsPerPage(); // Definir o valor inicial
+    updateItemsPerPage(); 
     window.addEventListener('resize', updateItemsPerPage);
 
     return () => window.removeEventListener('resize', updateItemsPerPage);

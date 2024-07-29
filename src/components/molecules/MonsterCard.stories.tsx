@@ -1,5 +1,3 @@
-// src/components/molecules/MonsterCard.stories.tsx
-
 import { Meta, StoryFn } from '@storybook/react';
 import MonsterCard, { MonsterCardProps } from './MonsterCard';
 import { EvolutionChain } from '../../types';

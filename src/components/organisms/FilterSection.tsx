@@ -101,7 +101,6 @@ const typeColors: { [key: string]: string } = {
   fairy: 'bg-pink-300',
   normal: 'bg-white',
   stellar: 'bg-pink-800'
-  // Adicione mais cores conforme necessário
 };
 
 export type { FilterSectionProps };
