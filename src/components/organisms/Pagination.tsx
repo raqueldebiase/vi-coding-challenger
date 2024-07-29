@@ -24,19 +24,25 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
       <button
         onClick={handlePrevious}
         disabled={currentPage === 1}
-        className='px-4 py-2 bg-mediumGray text-darkGray rounded-md flex-1 sm:flex-none'
+        className='p-2 bg-mediumGray text-darkGray rounded-md flex items-center justify-center disabled:opacity-50'
+        aria-label="Previous Page"
       >
-        Previous
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+        </svg>
       </button>
-      <span className='mx-2 flex-1 text-center sm:flex-none'>
-        Page {currentPage} of {totalPages}
+      <span className='mx-2 text-center'>
+        {currentPage} of {totalPages}
       </span>
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className='px-4 py-2 bg-mediumGray text-darkGray rounded-md flex-1 sm:flex-none'
+        className='p-2 bg-mediumGray text-darkGray rounded-md flex items-center justify-center disabled:opacity-50'
+        aria-label="Next Page"
       >
-        Next
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+        </svg>
       </button>
     </div>
   );
