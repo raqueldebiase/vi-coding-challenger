@@ -3,6 +3,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import ProductOverviewTemplate from './ProductOverviewTemplate';
 import { Monster } from '../../types';
 
+
 const exampleMonsters: Monster[] = [
   {
     id: 1,
@@ -30,12 +31,14 @@ const exampleMonsters: Monster[] = [
   },
 ];
 
+
 export default {
   title: 'Templates/ProductOverviewTemplate',
   component: ProductOverviewTemplate,
 } as Meta<typeof ProductOverviewTemplate>;
 
-const Template: StoryFn<typeof ProductOverviewTemplate> = (args) => {
+
+const Template: StoryFn = (args) => {
   const [selectedType, setSelectedType] = useState<string>('fire');
 
   return (
@@ -48,7 +51,7 @@ const Template: StoryFn<typeof ProductOverviewTemplate> = (args) => {
   );
 };
 
+
 export const Default = Template.bind({});
-Default.args = {
-  title: 'Our Pocket Monsters',
-};
+Default.args = {};
+

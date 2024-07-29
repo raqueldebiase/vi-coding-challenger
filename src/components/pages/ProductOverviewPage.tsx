@@ -35,7 +35,6 @@ const ProductOverviewPage: React.FC = () => {
 
   return (
     <ProductOverviewTemplate 
-      title="Our Pocket Monsters"
       selectedType={selectedType}
       onTypeChange={setSelectedType}
       monsters={exampleMonsters} 

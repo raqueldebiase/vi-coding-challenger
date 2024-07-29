@@ -10,4 +10,6 @@ export default {
 const Template: StoryFn = (args) => <ProductOverviewPage {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  title: 'Our Pocket Monsters',
+};
