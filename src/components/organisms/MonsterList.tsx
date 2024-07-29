@@ -33,7 +33,7 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
 
   const totalPages = Math.ceil(monsters.length / itemsPerPage);
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = (page: number) => {  
     setCurrentPage(page);
   };
 
