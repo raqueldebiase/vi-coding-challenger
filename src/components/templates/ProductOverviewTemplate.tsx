@@ -18,7 +18,8 @@ const ProductOverviewTemplate: React.FC<ProductOverviewTemplateProps> = ({
 }) => {
   return (
     <div className="p-4">
-      <h1 className="text-3xl font-bold mb-6">{title}</h1>
+      <h1 className="text-3xl font-bold pb-6 border-b-2 border-gray-300 ">{title}</h1>
+      <h2 className="text-lg font-semibold my-6 ">These are our products: </h2>
       <div className="flex flex-col md:flex-row gap-4">
         <aside className="flex-shrink-0 w-full md:w-1/4">
           <FilterSection onTypeChange={onTypeChange} selectedType={selectedType} />
