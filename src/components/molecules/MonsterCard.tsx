@@ -1,13 +1,15 @@
+// src/components/molecules/MonsterCard.tsx
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChainLink } from '../../types/index';
+import { EvolutionChain, ChainLink } from '../../types';
 
 export interface MonsterCardProps {
   name: string;
-  types: string[]; // Array de tipos
+  types: string[];
   id: number;
   image: string;
-  evolutionChain?: ChainLink;
+  evolutionChain?: EvolutionChain; // Correção do tipo para EvolutionChain
 }
 
 const typeColors: Record<string, string> = {
@@ -39,13 +41,14 @@ const getCardBackgroundColor = (type: string) => {
 };
 
 const MonsterCard: React.FC<MonsterCardProps> = ({ name, types, id, image, evolutionChain }) => {
-  const primaryTypeColor = getCardBackgroundColor(types[0]); // Usar o primeiro tipo para o fundo
+  const primaryTypeColor = getCardBackgroundColor(types[0]);
+
   const renderTypeCircles = (types: string[]) => {
     return types.map((type, index) => (
       <div
         key={index}
         className={`w-4 h-4 rounded-full ${getCardBackgroundColor(type)} mr-2`}
-        title={type} // Adicionar um tooltip para o tipo
+        title={type}
       />
     ));
   };
@@ -56,14 +59,18 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ name, types, id, image, evolu
       if (link.species && link.species.name) {
         names.push(link.species.name);
       }
-      link.evolves_to.forEach(evolveLink => {
-        names = names.concat(evolve(evolveLink));
-      });
+      if (link.evolves_to && link.evolves_to.length > 0) {
+        link.evolves_to.forEach(evolveLink => {
+          names = names.concat(evolve(evolveLink));
+        });
+      }
       return names;
     };
 
-    return evolve(chain);
+    return chain ? evolve(chain) : [];
   };
+
+  const evolutionNames = evolutionChain ? renderEvolutionChain(evolutionChain.chain) : [];
 
   return (
     <div className={`p-2 rounded-lg shadow-md ${primaryTypeColor}`}>
@@ -75,15 +82,15 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ name, types, id, image, evolu
         />
         <div className="bg-white/90 backdrop-blur-md flex flex-wrap justify-center p-4 rounded min-h-[150px]">
           <div className="flex flex-wrap items-center mt-2">
-            {renderTypeCircles(types)} {/* Exibir bolinhas de cores para todos os tipos */}
+            {renderTypeCircles(types)}
             <h3 className="text-lg font-semibold capitalize">{name}</h3>
           </div>
-          {evolutionChain && (
+          {evolutionNames.length > 0 && (
             <div className='mt-2'>
               <h4 className='text-sm font-semibold'>Evolution Chain:</h4>
-              {renderEvolutionChain(evolutionChain).map((name, index) => (
+              {evolutionNames.map((evolutionName, index) => (
                 <span key={index} className="block text-sm text-gray-600 capitalize">
-                  {name}
+                  {evolutionName}
                 </span>
               ))}
             </div>

@@ -1,26 +1,26 @@
-import React from 'react';
+// src/components/organisms/MonsterList.stories.tsx
 import { Meta, StoryFn } from '@storybook/react';
-import MonsterList, { MonsterListProps } from './MonsterList';
-import { Monster } from '../../types';
+import MonsterList, { MonsterListProps } from './MonsterList'; // Corrigir caminho de importação
+import { Monster } from '../../types'; // Corrigir caminho de importação
 
-// Examples of Pokémon data for stories
+// Exemplos de dados de monstros para as histórias
 const exampleMonsters: Monster[] = [
   {
     id: 1,
     name: 'Charmander',
-    type: 'fire',
+    types: ['fire'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png',
   },
   {
     id: 2,
     name: 'Squirtle',
-    type: 'water',
+    types: ['water'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png',
   },
   {
     id: 3,
     name: 'Bulbasaur',
-    type: 'grass',
+    types: ['grass'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
   },
 ];
@@ -28,7 +28,7 @@ const exampleMonsters: Monster[] = [
 export default {
   title: 'organisms/MonsterList',
   component: MonsterList,
-} as Meta;
+} as Meta<typeof MonsterList>;
 
 const Template: StoryFn<MonsterListProps> = (args) => <MonsterList {...args} />;
 

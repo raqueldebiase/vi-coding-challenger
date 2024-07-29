@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Monster } from '../../types/index';
+// src/components/organisms/MonsterList.tsx
+
+import React, { useState } from 'react';
+import { Monster } from '../../types';
 import Pagination from './Pagination';
 import MonsterCard from '../molecules/MonsterCard';
 
@@ -11,35 +13,13 @@ export interface MonsterListProps {
 
 const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(12);
-
-  // Update itemsPerPage based on window width
-  useEffect(() => {
-    const updateItemsPerPage = () => {
-      if (window.innerWidth < 480) {
-        setItemsPerPage(4);
-      } else if (window.innerWidth < 640) {
-        setItemsPerPage(4); 
-      } else if (window.innerWidth < 768) {
-        setItemsPerPage(6);
-      } else if (window.innerWidth < 1024) {
-        setItemsPerPage(8); 
-      } else {
-        setItemsPerPage(12); 
-      }
-    };
-
-    // Initial check
-    updateItemsPerPage();
-
-    // Add event listener for window resize
-    window.addEventListener('resize', updateItemsPerPage);
-
-    // Clean up listener on component unmount
-    return () => window.removeEventListener('resize', updateItemsPerPage);
-  }, []);
-
+  const itemsPerPage = 12;
   const totalPages = Math.ceil(monsters.length / itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   const paginatedMonsters = monsters.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
@@ -59,7 +39,7 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
               name={monster.name}
               types={monster.types}
               image={monster.image}
-              evolutionChain={monster.evolutionChain?.chain}
+              evolutionChain={monster.evolutionChain} // Passe a cadeia de evolução aqui
             />
           ))
         )}
@@ -79,7 +59,7 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
-        onPageChange={setCurrentPage}
+        onPageChange={handlePageChange}
       />
     </div>
   );
