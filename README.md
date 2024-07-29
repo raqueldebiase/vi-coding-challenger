@@ -2,81 +2,63 @@
 
 Pocket Monsters App is a React application that uses TypeScript for static typing and Tailwind CSS for styling. The app is built around reusable components and focuses on a filter system and displaying details of Pokémon, including their evolutions.
 
-Features: 
-Pokémon Visualization: Displays a list of Pokémon with their images and types.
-Type Filtering: Allows filtering the list of Pokémon based on their types.
-Evolution Details: Shows information about the Pokémon evolution chain.
-Loading and Errors: Displays loading states and error messages when needed.
-Responsive Design: The interface is responsive and adapts to different screen sizes.
+## Features
 
-Project Structure: 
-src/components: Contains reusable components such as MonsterCard, FilterSection, and MonsterList.
-src/templates: Contains page templates like ProductOverviewTemplate, which organizes the page layout.
-src/pages: Contains main pages of the application, such as ProductOverviewPage.
-src/types.ts: Defines interfaces and types used in the project, including types for Pokémon and their evolution chains.
-src/stories: Contains Storybook stories for visualizing and testing components in different states.
+- **Pokémon Visualization:** Displays a list of Pokémon with their images and types.
+- **Type Filtering:** Allows filtering the list of Pokémon based on their types.
+- **Evolution Details:** Shows information about the Pokémon evolution chain.
+- **Loading and Errors:** Displays loading states and error messages when needed.
+- **Responsive Design:** The interface is responsive and adapts to different screen sizes.
 
-Setup and Running
-Install Dependencies
+## Project Structure
 
-To install the project dependencies, run:
+- **`src/components`**: Contains reusable components such as `MonsterCard`, `FilterSection`, and `MonsterList`.
+- **`src/templates`**: Contains page templates like `ProductOverviewTemplate`, which organizes the page layout.
+- **`src/pages`**: Contains main pages of the application, such as `ProductOverviewPage`.
+- **`src/types.ts`**: Defines interfaces and types used in the project, including types for Pokémon and their evolution chains.
+- **`src/stories`**: Contains Storybook stories for visualizing and testing components in different states.
 
-bash
-Copiar código
-npm install
-Start the Application
+## Installation
 
-To start the development server, run:
+To get started with the project, follow these steps:
 
-bash
-Copiar código
-npm start
-The application will be available at http://localhost:3000.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/pocket-monsters-app.git
+    ```
 
-Run Tests
+2. Navigate to the project directory:
+    ```bash
+    cd pocket-monsters-app
+    ```
 
-To run tests, execute:
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-bash
-Copiar código
-npm test
-Run Storybook
+4. Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-To start Storybook and view the components, run:
+## Development
 
-bash
-Copiar código
+For linting and type checking, use the following commands:
+
+- **Linting**:
+    ```bash
+    npm run lint
+    ```
+
+- **Type Checking**:
+    ```bash
+    npm run type-check
+    ```
+
+## Storybook
+
+To run Storybook for component development and testing, use:
+
+```bash
 npm run storybook
-Tailwind CSS Setup
-The project uses Tailwind CSS for styling. Configurations can be found in tailwind.config.js and postcss.config.js. Ensure that Tailwind CSS is set up correctly to apply styles as expected.
-
-ESLint Configuration
-If you are developing a production application, it is recommended to update the ESLint configuration to enable type-aware linting rules:
-
-Configure the parserOptions property in the .eslintrc.js file:
-
-js
-Copiar código
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-Replace plugin:@typescript-eslint/recommended with plugin:@typescript-eslint/recommended-type-checked or plugin:@typescript-eslint/strict-type-checked.
-
-Optionally, add plugin:@typescript-eslint/stylistic-type-checked.
-
-Install eslint-plugin-react and add plugin:react/recommended and plugin:react/jsx-runtime to the extends list.
-
-Contributing
-Fork the repository.
-Create a branch for your modification (git checkout -b my-new-feature).
-Commit your changes (git commit -am 'Add new feature').
-Push to the remote repository (git push origin my-new-feature).
-Open a Pull Request.
-License
-This project is licensed under the MIT License.
