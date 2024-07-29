@@ -9,7 +9,7 @@ export interface MonsterCardProps {
   types: string[];
   id: number;
   image: string;
-  evolutionChain?: EvolutionChain; // Correção do tipo para EvolutionChain
+  evolutionChain?: EvolutionChain;
 }
 
 const typeColors: Record<string, string> = {
@@ -73,14 +73,14 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ name, types, id, image, evolu
   const evolutionNames = evolutionChain ? renderEvolutionChain(evolutionChain.chain) : [];
 
   return (
-    <div className={`p-2 rounded-lg shadow-md ${primaryTypeColor}`}>
+    <div className={`p-2 rounded-lg shadow-md ${primaryTypeColor} w-full`}>
       <Link to={`/monsters/${id}`} className="block text-center">
         <img
           src={image}
           alt={name}
           className="w-full h-40 object-contain rounded-t"
         />
-        <div className="bg-white/90 backdrop-blur-md flex flex-wrap justify-center p-4 rounded min-h-[150px]">
+        <div className="bg-white/90 backdrop-blur-md grid justify-center p-4 rounded min-h-[150px]">
           <div className="flex flex-wrap items-center mt-2">
             {renderTypeCircles(types)}
             <h3 className="text-lg font-semibold capitalize">{name}</h3>

@@ -23,14 +23,14 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
   const paginatedMonsters = monsters.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <div className="relative">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="relative p-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {loading ? (
           Array.from({ length: itemsPerPage }).map((_, index) => (
             <div key={index} className="w-full h-64 bg-gray-200 rounded-lg animate-pulse"></div>
           ))
         ) : monsters.length === 0 ? (
-          <p className="col-span-full text-center text-gray-500">No monsters found in this category.</p>
+          <p className="w-full text-center text-gray-500">No monsters found in this category.</p>
         ) : (
           paginatedMonsters.map(monster => (
             <MonsterCard
@@ -39,7 +39,7 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
               name={monster.name}
               types={monster.types}
               image={monster.image}
-              evolutionChain={monster.evolutionChain} // Passe a cadeia de evolução aqui
+              evolutionChain={monster.evolutionChain}
             />
           ))
         )}
