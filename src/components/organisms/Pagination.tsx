@@ -1,5 +1,3 @@
-// src/components/organisms/Pagination.tsx
-
 import React from 'react';
 
 interface PaginationProps {
@@ -22,21 +20,21 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
   };
 
   return (
-    <div className='flex justify-center items-center mt-10'>
+    <div className='flex justify-center items-center mt-10 space-x-2 overflow-x-auto'>
       <button
         onClick={handlePrevious}
         disabled={currentPage === 1}
-        className='px-4 py-2 mx-1 bg-mediumGray text-darkGray rounded w-40'
+        className='px-4 py-2 bg-mediumGray text-darkGray rounded-md flex-1 sm:flex-none'
       >
         Previous
       </button>
-      <span className='mx-2'>
+      <span className='mx-2 flex-1 text-center sm:flex-none'>
         Page {currentPage} of {totalPages}
       </span>
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className='px-4 py-2 mx-1 bg-mediumGray text-darkGray rounded w-40'
+        className='px-4 py-2 bg-mediumGray text-darkGray rounded-md flex-1 sm:flex-none'
       >
         Next
       </button>
