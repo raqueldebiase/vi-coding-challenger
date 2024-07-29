@@ -7,25 +7,25 @@ const exampleMonsters: Monster[] = [
   {
     id: 1,
     name: 'Charmander',
-    type: 'fire',
+    types: ['fire'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png',
   },
   {
     id: 2,
     name: 'Squirtle',
-    type: 'water',
+    types: ['water'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png',
   },
   {
     id: 3,
     name: 'Bulbasaur',
-    type: 'grass',
+    types: ['grass'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
   },
   {
     id: 4,
     name: 'Pikachu',
-    type: 'electric',
+    types: ['electric'],
     image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
   },
 ];
