@@ -1,6 +1,5 @@
 // src/components/organisms/Pagination.stories.tsx
 
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import Pagination from './Pagination';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import FilterSection from '../organisms/FilterSection';
 import MonsterList from '../organisms/MonsterList';
-import { Monster } from '../../types/index';
+import { Monster } from '../../types';
 
 interface ProductOverviewTemplateProps {
   title?: string;

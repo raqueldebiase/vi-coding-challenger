@@ -1,4 +1,4 @@
-import { Monster, EvolutionChain } from '../types/index';
+import { Monster, EvolutionChain } from '../types';
 
 export const fetchMonsters = async (type: string): Promise<Monster[]> => {
   const url = type === 'all' ? 'https://pokeapi.co/api/v2/pokemon?limit=10000' : `https://pokeapi.co/api/v2/type/${type}`;
