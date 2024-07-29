@@ -1,3 +1,5 @@
+// .storybook/main.ts
+
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
@@ -13,10 +15,15 @@ const config: StorybookConfig = {
   async viteFinal(config) {
     return {
       ...config,
-      plugins: [
-        ...(config.plugins || []),
-       
-      ],
+      css: {
+        postcss: {
+          plugins: [
+            require('postcss-import'),
+            require('tailwindcss'),
+            require('autoprefixer'),
+          ],
+        },
+      },
     };
   },
 };
