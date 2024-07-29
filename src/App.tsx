@@ -35,8 +35,8 @@ function App() {
           <h1 className="text-3xl font-bold pb-6 border-b-2 border-gray-300">Monster Overview</h1>
           <h2 className="text-lg font-semibold my-6">These are our products: </h2>
       </header>
-      <div className="flex gap-6">
-        <aside className=" p-4 h-screen">
+      <div className="flex gap-0 md:gap-6">
+        <aside className="p-4 h-screen">
           <FilterSection onTypeChange={setSelectedType} selectedType={selectedType} />
         </aside>
         <main className="flex-1">

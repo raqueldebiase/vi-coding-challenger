@@ -47,7 +47,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onTypeChange, selectedTyp
   }
 
   return (
-    <div className="bg-gray-100 rounded-lg shadow-md p-4">
+    <div className="bg-gray-100 rounded-lg shadow-md p-2 md:p-4">
       <h2 className="text-md font-semibold mb-4">Filter By Type:</h2>
       <div className="flex flex-col gap-2">
         <div
