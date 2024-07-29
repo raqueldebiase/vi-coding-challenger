@@ -9,7 +9,7 @@ function App() {
   const [monsters, setMonsters] = useState<Monster[]>([]);
   const [loading, setLoading] = useState<boolean>(false); 
   const [error, setError] = useState<string | null>(null); 
-  const [selectedType, setSelectedType] = useState<string>('fire');
+  const [selectedType, setSelectedType] = useState<string>('all');
 
   useEffect(() => {
     const loadMonsters = async () => {
