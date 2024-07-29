@@ -36,7 +36,7 @@ function App() {
           <h2 className="text-lg font-semibold my-6">These are our products: </h2>
       </header>
       <div className="flex gap-0 md:gap-6">
-        <aside className="p-4 h-screen">
+        <aside className="p-0 md:p-4 h-screen">
           <FilterSection onTypeChange={setSelectedType} selectedType={selectedType} />
         </aside>
         <main className="flex-1">

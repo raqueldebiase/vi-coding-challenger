@@ -80,7 +80,7 @@ const MonsterCard: React.FC<MonsterCardProps> = ({ name, types, id, image, evolu
           alt={name}
           className="w-full h-40 object-contain rounded-t"
         />
-        <div className="bg-white/90 backdrop-blur-md grid justify-center p-1 md:p-4 rounded min-h-[150px]">
+        <div className="bg-white/90 backdrop-blur-md grid items-center p-1 md:p-4 rounded min-h-[150px]">
           <div className="flex flex-wrap items-center mt-2">
             {renderTypeCircles(types)}
             <h3 className="text-lg font-semibold capitalize">{name}</h3>

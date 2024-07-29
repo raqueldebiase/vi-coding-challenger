@@ -1,6 +1,4 @@
-// src/components/organisms/MonsterList.tsx
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Monster } from '../../types';
 import Pagination from './Pagination';
 import MonsterCard from '../molecules/MonsterCard';
@@ -13,7 +11,26 @@ export interface MonsterListProps {
 
 const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const [itemsPerPage, setItemsPerPage] = useState<number>(12);
+  
+  // Atualiza o itemsPerPage com base na largura da janela
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth < 640) { // Mobile
+        setItemsPerPage(3);
+      } else if (window.innerWidth < 768) { // Tablet
+        setItemsPerPage(6);
+      } else { // Desktop
+        setItemsPerPage(12);
+      }
+    };
+
+    updateItemsPerPage(); // Definir o valor inicial
+    window.addEventListener('resize', updateItemsPerPage);
+
+    return () => window.removeEventListener('resize', updateItemsPerPage);
+  }, []);
+
   const totalPages = Math.ceil(monsters.length / itemsPerPage);
 
   const handlePageChange = (page: number) => {
@@ -23,7 +40,7 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
   const paginatedMonsters = monsters.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <div className="relative p-4">
+    <div className="relative pl-4 md:p-4">
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {loading ? (
           Array.from({ length: itemsPerPage }).map((_, index) => (
