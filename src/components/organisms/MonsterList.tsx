@@ -65,7 +65,7 @@ const MonsterList: React.FC<MonsterListProps> = ({ monsters, loading, error }) =
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
           <div className="relative flex flex-col items-center">
-            <div className="w-36 h-36 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
+          <div className="w-24 h-24 md:w-36 md:h-36 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
             <span className="mt-4 text-lg text-gray-700">Loading...</span>
           </div>
         </div>
